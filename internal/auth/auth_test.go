@@ -20,7 +20,7 @@ func TestMalformedApiKey(t *testing.T) {
   header.Set("Authorization", "ThisIsATestKey")
   want := regexp.MustCompile(`^$`)
   key, err := GetAPIKey(header)
-  if !want.MatchString(key) || err != nil {
+  if !want.MatchString(key) || err == nil {
     t.Fatalf(`GetAPIKey([Malformed Header]) = %q, %v, want match for %#q, malformed authorization header`, key, err, want)
   }
 }
