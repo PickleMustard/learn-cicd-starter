@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  tests:
     name: Tests
     runs-on: ubuntu-latest
 
@@ -20,4 +20,3 @@ jobs:
 
       - name: Force Failure
         run: (exit 1)
-
