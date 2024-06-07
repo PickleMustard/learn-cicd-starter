@@ -20,3 +20,4 @@ jobs:
 
       - name: Force Failure
         runs: (exit 1)
+
