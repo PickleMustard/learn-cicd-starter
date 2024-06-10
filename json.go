@@ -27,8 +27,8 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 		return
 	}
 	w.WriteHeader(code)
-  _, write_err := w.Write(dat)
-  if write_err != nil {
-    log.Printf("Error writing over network: %s", write_err)
-  }
+	_, write_err := w.Write(dat)
+	if write_err != nil {
+		log.Printf("Error writing over network: %s", write_err)
+	}
 }
