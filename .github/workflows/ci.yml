@@ -29,6 +29,15 @@ jobs:
       - name: Format Code
         run: test -z $(go fmt ./...)
 
-      - uses: actions/staticcheck-action@v1
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.22'
+
+      - name: Run Staticcheck
+        uses: actions/staticcheck-action@v1
         with:
           version: "latest"
