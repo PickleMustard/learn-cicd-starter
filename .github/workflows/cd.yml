@@ -6,6 +6,9 @@ jobs:
   Deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    permission:
+      contents: 'read'
+      id-token: 'write'
 
     steps:
       - name: Checkout Code
@@ -18,3 +21,16 @@ jobs:
 
       - name: Build App
         run: ./scripts/buildprod.sh
+
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '$({ secrets.GCP_CREDENTIALS })'
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          version: '>= 363.0.0'
+
+      - name: Push build to Artifact Repository
+        run: gcloud builds submit --tag us-central1-docker.pkg.dev/robust-radar-426018-t4/notely-ar-repo/notely:latest .
