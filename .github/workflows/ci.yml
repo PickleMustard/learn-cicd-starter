@@ -38,6 +38,6 @@ jobs:
           go-version: '1.22'
 
       - name: Run Staticcheck
-        uses: actions/staticcheck-action@v1
+        uses: dominikh/staticcheck-action@v1
         with:
           version: "latest"
