@@ -44,7 +44,7 @@ jobs:
         run: staticcheck ./...
 
       - name: Install Securitycheck
-        run: go install github.com/securego/gosec/v2/cmd/gosec@ubuntu-latest
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
 
       - name: Run Securitycheck
         run: gosec ./...
